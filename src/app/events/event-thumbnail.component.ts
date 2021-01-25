@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, Output, EventEmitter } from '@angular/core'
 
 @Component({
     selector: 'event-thumbnail',
@@ -10,6 +10,7 @@ import { Component, Input } from '@angular/core'
         <h5>Time: {{event.time}}</h5>
         <h5>Price: \${{ event.price }}</h5>
         <h5>Location: {{event.location.city}}</h5>
+        <button class="btn btn-primary" (click)="handleClickMe()">Click here!</button>
     </div>
     
     `
@@ -18,5 +19,10 @@ import { Component, Input } from '@angular/core'
 export class EventThumbnailComponent {
     //Input decorator tells Angular this event property will be passed in from another component
     @Input() event: any
+    @Output() eventClick = new EventEmitter()
+
+    handleClickMe() {
+        this.eventClick.emit(this.event.name)
+    }
 
 }
