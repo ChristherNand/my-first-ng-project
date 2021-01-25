@@ -9,10 +9,18 @@ import { Component, Input } from '@angular/core'
         <h5>Date: {{event.date}}</h5>
         <h5>Time: {{event.time}}</h5>
         <h5>Price: \${{ event.price }}</h5>
-        <h5>Location: {{event.location.city}}</h5>
+        <h5 class="text-color">Location: {{event.location.city}}</h5>
     </div>
     
-    `
+    `,
+    //You can provide styles in this way or using stylesUrl to point to .css files
+    styles: [
+        `
+            .text-color {
+                color: #b37d8b
+            }
+        `
+    ]
 })
 
 export class EventThumbnailComponent {
