@@ -7,7 +7,9 @@ import { Component } from '@angular/core'
         <div>
             <h1>Upcoming Events</h1>
             <hr />
-            <event-thumbnail [event]="eventOne"></event-thumbnail>
+            <event-thumbnail #thumbnail [event]="eventOne"></event-thumbnail>
+            <h2>{{thumbnail.accessedProperty}}</h2>
+            <button class="btn btn-primary" (click)="thumbnail.sayHi()">Greet me!</button>
         </div>
     `
 })

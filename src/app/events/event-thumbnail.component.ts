@@ -19,4 +19,10 @@ export class EventThumbnailComponent {
     //Input decorator tells Angular this event property will be passed in from another component
     @Input() event: any
 
+    sayHi() {
+        alert('Helloooooo everybody!')
+    }
+
+    accessedProperty: string = "Hello"
+
 }
