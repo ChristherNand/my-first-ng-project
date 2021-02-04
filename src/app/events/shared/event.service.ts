@@ -1,10 +1,18 @@
 import { Injectable } from "@angular/core";
+import { Subject } from "rxjs";
 
 @Injectable()
 export class EventService {
   //This method is where AJAX call takes place
   getEvents() {
-    return EVENTS;
+    //Creating first observable
+    let subject = new Subject();
+    setTimeout(() => {
+      subject.next(EVENTS);
+      subject.complete();
+    }, 200);
+
+    return subject;
   }
 
   getEvent(id: number) {

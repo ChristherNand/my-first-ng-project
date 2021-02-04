@@ -1,5 +1,7 @@
 //We need to import this decorator to build app the component
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+
 import { EventService } from "./shared/event.service";
 import { ToastrService } from "../common/toastr.service";
 
@@ -23,11 +25,13 @@ export class EventListComponent implements OnInit {
   events: any[];
   constructor(
     private eventService: EventService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.events = this.eventService.getEvents();
+    //getEvents() is returning an observable, so in order to get the data we need to subscribe it
+    this.events = this.route.snapshot.data["events"];
   }
 
   handleThumbnailClick(eventName) {
